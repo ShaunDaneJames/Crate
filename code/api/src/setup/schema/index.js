@@ -1,3 +1,5 @@
+// this seems to pull in queries and mutations from schema/mutations and schema/queries files in the same directory
+
 // Imports
 import { GraphQLSchema } from 'graphql'
 

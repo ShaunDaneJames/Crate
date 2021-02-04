@@ -1,3 +1,5 @@
+// this pulls in all the available mutations for each model into one file
+
 // Imports
 import { GraphQLObjectType } from 'graphql'
 

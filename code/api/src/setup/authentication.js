@@ -1,7 +1,10 @@
+// an authToken is required in order for a user to do specific actions
+
 // Imports
 import jwt from 'jsonwebtoken'
 import serverConfig from '../config/server.json'
 
+// Store user authentication token
 // Authentication middleware
 export default function (request, response, next) {
   let authToken = request.headers.authorization

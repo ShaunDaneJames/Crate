@@ -1,3 +1,5 @@
+// this seems to pull in all available queries for each model into one file
+
 // Imports
 import { GraphQLObjectType } from 'graphql'
 

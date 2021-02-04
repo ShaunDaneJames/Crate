@@ -1,3 +1,5 @@
+// make models accessible? still figuring out what role modules play in this app though
+
 // Imports
 import express from 'express'
 import path from 'path'

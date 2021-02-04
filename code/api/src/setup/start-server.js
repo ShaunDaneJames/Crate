@@ -1,3 +1,5 @@
+// how we connect to the server and the success vs error messages for connection
+
 // App Imports
 import { PORT, NODE_ENV } from '../config/env'
 

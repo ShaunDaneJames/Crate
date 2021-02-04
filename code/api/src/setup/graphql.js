@@ -13,6 +13,7 @@ export default function (server) {
   server.use(authentication)
 
   // API (GraphQL on route `/`)
+  // auth.user is referenced in several resolvers, which seems to indicate that authentication is required for specific actions to take place
   server.use(serverConfig.graphql.endpoint, graphqlHTTP(request => ({
     schema,
     graphiql: serverConfig.graphql.ide,

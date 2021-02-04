@@ -1,3 +1,7 @@
+// seems to specify which files define the models involved in the db
+// abstracts details about models out into the individual model files
+
+
 // Imports
 import Sequelize from 'sequelize'
 

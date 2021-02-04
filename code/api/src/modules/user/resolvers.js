@@ -7,6 +7,9 @@ import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
 
+// CRD Functions for User
+// The function (resolver) names are the calls made to the BE by FE
+
 // Create
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check
@@ -27,6 +30,9 @@ export async function create(parentValue, { name, email, password }) {
   }
 }
 
+// resolver for login - returns either errors when authentication fails, or user data
+// BE will need to update userDetailsToken to include style so this data is included in the Redux store upon login
+// ?? Not sure how to handle the case when a user does not have a style - will it error out, or return empty?
 export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
 
@@ -47,7 +53,8 @@ export async function login(parentValue, { email, password }) {
         id: userDetails.id,
         name: userDetails.name,
         email: userDetails.email,
-        role: userDetails.role
+        role: userDetails.role,
+        // style: userDetails.style
       }
 
       return {
@@ -77,3 +84,6 @@ export async function remove(parentValue, { id }) {
 export async function getGenders() {
   return Object.values(params.user.gender)
 }
+
+
+// BE may need to add a resolver for a getStyle request here, if that's how we decide to organize the response
