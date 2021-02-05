@@ -1,6 +1,10 @@
 'use strict'
 
 // User
+/*
+  STEARNZY
+  This will have to be updated to include the STYLE attribute
+*/
 module.exports = function(sequelize, DataTypes) {
   let User = sequelize.define('users', {
     name: {

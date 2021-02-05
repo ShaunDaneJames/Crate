@@ -47,6 +47,11 @@ class Login extends Component {
     })
   }
 
+/*
+  STEARNZY
+  This onSubmit is triggered when the User clicks sign in.  The this.props.login command triggers the LOGIN method imported above from /api/actions
+  Is THIS.PROPS.LOGIN(THIS.STATE.USER) taking the argument of the user credentials to log in, even if invalid?
+  */
   onSubmit = (event) => {
     event.preventDefault()
 
@@ -112,6 +117,10 @@ class Login extends Component {
           <H3 font="secondary" style={{ marginBottom: '1em' }}>Login to your account</H3>
 
           {/* Login Form */}
+{/* 
+  STEARNZY
+  This is the form to log in.  Once credentials are entered, this onSubmit action happens, which is defined above. 
+*/}
           <form onSubmit={this.onSubmit}>
             <div style={{ width: '25em', margin: '0 auto' }}>
               {/* Email */}

@@ -38,3 +38,10 @@ export const userRemove = {
   },
   resolve: remove
 }
+
+/*
+  STEARNZY
+  This file will have to include an addition mutation for POSTing a defined style to the USER in question.
+  This file will also contain a PATCHing mutuation as well, if we are to implement the EXTENSION for UPDATING THE STYLE
+  Add newStyle and updateStyle resolvers
+*/

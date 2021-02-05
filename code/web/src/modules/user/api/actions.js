@@ -26,6 +26,13 @@ export function setUser(token, user) {
 }
 
 // Login a user using credentials
+/*
+  STEARNZY
+  This login method triggers the login steps between frontend and backend utilizing axios.
+  The post query calls the OPERATION userLogin which lives in the backend at /api/src/modules/user/query.js
+  The VARIABLES are the credentials that are entered in to be sent and validated by the user table
+  FIELDS denotes what fields should be returned??
+*/
 export function login(userCredentials, isLoading = true) {
   return dispatch => {
     dispatch({

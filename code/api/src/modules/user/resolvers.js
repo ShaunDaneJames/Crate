@@ -27,6 +27,14 @@ export async function create(parentValue, { name, email, password }) {
   }
 }
 
+/*
+  STEARNZY
+  This function is triggered after the user attempts a login, receiving the attempted email and password.
+  If the USER is found via the email, the database's data for that user gets saved to userDetails
+  If the password entered matches the password saved in the database, a userDetailsToken is created with the userDetails and signed (for the store?)
+
+  The user's STYLE will also be returned, be it defined or undefined, in order to tell the front end to trigger the STYLE SURVEY if needed
+*/
 export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
 

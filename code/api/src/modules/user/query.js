@@ -21,6 +21,13 @@ export const user = {
 }
 
 // Auth
+/*
+  STEARNZY
+  This block is triggered by the query OPERATION of the same name.
+  The BE database is checked using the entered credentials, and RESOLVE triggers the LOGIN RESOLVER, which actually looks for the USER in the database
+
+  This query will have to include the STYLE attribute in order to be received by the frontend
+*/
 export const userLogin = {
   type: UserLoginType,
   args: {
@@ -47,3 +54,8 @@ export const userGenders = {
   type: new GraphQLList(UserGenderType),
   resolve: getGenders
 }
+
+/*
+  STEARNZY
+  New query for getStyle
+*/
