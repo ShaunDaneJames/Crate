@@ -57,6 +57,7 @@ class Signup extends Component {
 
     this.props.messageShow('Signing you up, please wait...')
 
+    // Action that calls to the API and attempts to register a user.
     this.props.register(this.state.user)
       .then(response => {
         this.setState({

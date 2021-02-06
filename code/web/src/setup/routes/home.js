@@ -8,6 +8,7 @@ import WhatsNew from '../../modules/pages/WhatsNew'
 // Home routes
 export default {
   home: {
+    // Landing page 
     path: '/',
     component: Home,
     exact: true
