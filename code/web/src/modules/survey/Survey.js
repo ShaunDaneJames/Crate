@@ -20,19 +20,14 @@ const Survey = () => {
     bohemian: [],
   });
 
-  const advanceQuestion = () => {
-    // TODO: Refactor
+  const recordAnswer = (cat) => {
+    setStyleAnswers(styleAnswers, styleAnswers[cat].push(question.id));
     let i = surveyQuestions.indexOf(question);
     if (i === surveyQuestions.length - 1) {
       console.log('Limit Reached');
       return;
     }
     setQuestion(surveyQuestions[i + 1]);
-  };
-
-  const recordAnswer = (cat) => {
-    // Set the State, etc
-    advanceQuestion();
   };
 
   const createAnswer = (answer) => {
