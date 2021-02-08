@@ -54,8 +54,3 @@ export const userGenders = {
   type: new GraphQLList(UserGenderType),
   resolve: getGenders
 }
-
-/*
-  STEARNZY
-  New query for getStyle
-*/
