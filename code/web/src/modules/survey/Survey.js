@@ -1,5 +1,5 @@
 // Imports
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // UI Imports
@@ -11,7 +11,7 @@ import { surveyQuestions } from './surveyQuestions';
 // State will store current question
 // as well as obj with response tallies
 
-const StyleSurvey = () => {
+const Survey = () => {
   const [question, setQuestion] = useState({});
   const [styleAnswers, setStyleAnswers] = useState({
     grunge: 0,
@@ -20,4 +20,8 @@ const StyleSurvey = () => {
     casual: 0,
     bohemian: 0,
   });
+
+  return <h1>Style Survey</h1>;
 };
+
+export default Survey;
