@@ -62,6 +62,10 @@ class Item extends PureComponent {
   };
 
   showSurvey = () => {
+    //
+    // TODO: Add if statement, checking user style in state
+    // route to survey or call onClickSubscribe
+
     this.props.history.push(userRoutes.survey.path);
   };
 

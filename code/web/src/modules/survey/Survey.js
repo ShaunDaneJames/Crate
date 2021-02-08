@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // UI Imports
-import Card from '../../ui/card/Card';
 
 // App Imports
 import { surveyQuestions } from './surveyQuestions';
@@ -12,7 +11,7 @@ import { surveyQuestions } from './surveyQuestions';
 // as well as obj with response tallies
 
 const Survey = () => {
-  const [question, setQuestion] = useState({});
+  const [question, setQuestion] = useState(surveyQuestions[0]);
   const [styleAnswers, setStyleAnswers] = useState({
     grunge: 0,
     sporty: 0,
@@ -21,7 +20,21 @@ const Survey = () => {
     bohemian: 0,
   });
 
-  return <h1>Style Survey</h1>;
+  const advanceQuestion = () => {
+    // TODO: Refactor
+    let i = surveyQuestions.indexOf(question);
+    if (i === surveyQuestions.length - 1) {
+      console.log('Limit Reached');
+      return;
+    }
+    setQuestion(surveyQuestions[i + 1]);
+  };
+
+  return (
+    <section onClick={() => advanceQuestion()}>
+      <h1>{question.question}</h1>
+    </section>
+  );
 };
 
 export default Survey;
