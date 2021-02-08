@@ -35,14 +35,11 @@ export default {
   },
 
   survey: {
-    path: '/user/survey',
+    path: '/user/style-preferences',
     component: Survey,
     auth: true,
   },
 };
 
 // TODO:
-// Add a new route called stylePreferences
-// path: '/style-preferences'
-// component: StylePreferences (to be created)
-// auth: true
+// Create property type for survey obj
