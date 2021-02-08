@@ -13,11 +13,11 @@ import { surveyQuestions } from './surveyQuestions';
 const Survey = () => {
   const [question, setQuestion] = useState(surveyQuestions[0]);
   const [styleAnswers, setStyleAnswers] = useState({
-    grunge: 0,
-    sporty: 0,
-    classic: 0,
-    casual: 0,
-    bohemian: 0,
+    grunge: [],
+    sporty: [],
+    classic: [],
+    casual: [],
+    bohemian: [],
   });
 
   const advanceQuestion = () => {
@@ -30,9 +30,24 @@ const Survey = () => {
     setQuestion(surveyQuestions[i + 1]);
   };
 
+  const recordAnswer = (cat) => {
+    // Set the State, etc
+    advanceQuestion();
+  };
+
+  const createAnswer = (answer) => {
+    return (
+      <div onClick={() => recordAnswer(answer.category)} key={answer.text}>
+        <h3>{answer.text}</h3>
+        <img src={answer.image} />
+      </div>
+    );
+  };
+
   return (
-    <section onClick={() => advanceQuestion()}>
+    <section>
       <h1>{question.question}</h1>
+      <div>{question.answers.map((answer) => createAnswer(answer))}</div>
     </section>
   );
 };
