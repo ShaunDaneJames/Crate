@@ -52,5 +52,3 @@ export const userGenders = {
   type: new GraphQLList(UserGenderType),
   resolve: getGenders
 }
-
-// BE may need to add a query here for FE to GET userStyle
