@@ -33,17 +33,33 @@ const Survey = () => {
 
   const createAnswer = (answer) => {
     return (
-      <div onClick={() => recordAnswer(answer.category)} key={answer.text}>
+      <div
+        onClick={() => recordAnswer(answer.category)}
+        key={answer.text}
+        style={{ padding: '1em' }}
+      >
         <h3>{answer.text}</h3>
-        <img src={APP_URL + answer.image} />
+        <img
+          src={APP_URL + answer.image}
+          style={{ width: '10em', height: '7em' }}
+        />
       </div>
     );
   };
 
   return (
-    <section>
-      <h1>{question.question}</h1>
-      <div>{question.answers.map((answer) => createAnswer(answer))}</div>
+    <section
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <h1 style={{ padding: '4em' }}>{question.question}</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        {question.answers.map((answer) => createAnswer(answer))}
+      </div>
     </section>
   );
 };
