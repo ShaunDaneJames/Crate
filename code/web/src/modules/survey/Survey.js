@@ -8,9 +8,6 @@ import { APP_URL } from '../../setup/config/env';
 import { surveyQuestions } from './surveyQuestions';
 import userRoutes from '../../setup/routes/user';
 
-// State will store current question
-// as well as obj with response tallies
-
 const Survey = (props) => {
   const [question, setQuestion] = useState(surveyQuestions[0]);
   const [styleAnswers, setStyleAnswers] = useState({
@@ -27,9 +24,6 @@ const Survey = (props) => {
     let i = surveyQuestions.indexOf(question);
     if (i === surveyQuestions.length - 1) {
       calculateStyle()
-      //on the conditionally rendered your style view, path to the profile (history)
-      //TODO: ensure that when survey is complete they are ALSO subscribed to the crate they clicked on
-      //TODO: add style to profile page
       return;
     }
     setQuestion(surveyQuestions[i + 1]);
