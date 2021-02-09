@@ -26,6 +26,12 @@ const Survey = () => {
     let i = surveyQuestions.indexOf(question);
     if (i === surveyQuestions.length - 1) {
       console.log('Limit Reached');
+      calculateStyle()
+      //go to the function that calculates the style
+      //conditionally render the users style
+      //on the conditionally rendered your style view, path to the profile (history)
+      //TODO: ensure that when survey is complete they are ALSO subscribed to the crate they clicked on
+      //TODO: add style to profile page
       return;
     }
     setQuestion(surveyQuestions[i + 1]);
@@ -46,6 +52,19 @@ const Survey = () => {
       </div>
     );
   };
+
+  const calculateStyle = () => {
+   let styleTally = Object.entries(styleAnswers)
+   let sortedStyles = styleTally.sort((a,b) => {
+     return a[1].length > b[1].length ? 1 : -1
+   })
+   debugger
+    //need to sort the object by array length
+    //condition 1: array[0] has length 1: eclectic
+    //condition 2: if array[0] = array[1]: style 1 but style 2
+    //condition 3: array[0] is not equal to array[1]: that style
+    //then render this is your style view (leads to profile etc)
+  }
 
   return (
     <section
