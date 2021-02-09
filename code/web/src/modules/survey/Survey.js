@@ -1,8 +1,9 @@
 // Imports
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { APP_URL } from '../../setup/config/env';
 
 // UI Imports
+// import sporty from './assets/running.jpg';
 
 // App Imports
 import { surveyQuestions } from './surveyQuestions';
@@ -34,7 +35,7 @@ const Survey = () => {
     return (
       <div onClick={() => recordAnswer(answer.category)} key={answer.text}>
         <h3>{answer.text}</h3>
-        <img src={answer.image} />
+        <img src={APP_URL + answer.image} />
       </div>
     );
   };
