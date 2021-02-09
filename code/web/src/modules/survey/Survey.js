@@ -54,11 +54,20 @@ const Survey = () => {
   };
 
   const calculateStyle = () => {
-   let styleTally = Object.entries(styleAnswers)
-   let sortedStyles = styleTally.sort((a,b) => {
-     return a[1].length > b[1].length ? 1 : -1
-   })
-   debugger
+    let styleTally = Object.entries(styleAnswers)
+    let sortedStyles = styleTally.sort((a,b) => {
+      return b[1].length > a[1].length ? 1 : -1
+    })
+    debugger;
+    let style1 = sortedStyles[0][1]
+    let style2 = sortedStyles[1][1]
+    if (style1.length === 1) {
+      console.log('Your style is: ecletic style')
+    } else if (style1.length === style2.length) {
+      console.log(`Your style is: ${sortedStyles[0][0]} but ${sortedStyles[1][0]}`)
+    } else if (style1.length > style2.length) {
+      console.log(`Your style is: ${sortedStyles[0][0]}`)
+    }
     //need to sort the object by array length
     //condition 1: array[0] has length 1: eclectic
     //condition 2: if array[0] = array[1]: style 1 but style 2
