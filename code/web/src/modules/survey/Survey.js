@@ -26,9 +26,7 @@ const Survey = () => {
     setStyleAnswers(styleAnswers, styleAnswers[cat].push(question.id));
     let i = surveyQuestions.indexOf(question);
     if (i === surveyQuestions.length - 1) {
-      console.log('Limit Reached');
       calculateStyle()
-      //conditionally render the users style
       //on the conditionally rendered your style view, path to the profile (history)
       //TODO: ensure that when survey is complete they are ALSO subscribed to the crate they clicked on
       //TODO: add style to profile page

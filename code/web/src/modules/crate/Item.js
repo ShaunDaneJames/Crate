@@ -37,13 +37,18 @@ class Item extends PureComponent {
     this.props
       .create({ crateId })
       .then((response) => {
+        debugger;
         if (response.data.errors && response.data.errors.length > 0) {
           this.props.messageShow(response.data.errors[0].message);
         } else {
           this.props.messageShow('Subscribed successfully.');
-
-          this.props.history.push(userRoutes.subscriptions.path);
+          if (this.props.user.details.style) {
+            this.props.history.push(userRoutes.subscriptions.path);
+          } else {
+            this.props.history.push(userRoutes.survey.path);
+          }
         }
+  
       })
       .catch((error) => {
         this.props.messageShow(
@@ -59,14 +64,6 @@ class Item extends PureComponent {
           this.props.messageHide();
         }, 5000);
       });
-  };
-
-  showSurvey = () => {
-    //
-    // TODO: Add if statement, checking user style in state
-    // route to survey or call onClickSubscribe
-
-    this.props.history.push(userRoutes.survey.path);
   };
 
   render() {
@@ -99,8 +96,7 @@ class Item extends PureComponent {
           >
             <Button
               theme="primary"
-              // onClick={this.onClickSubscribe.bind(this, id)}
-              onClick={() => this.showSurvey()}
+              onClick={this.onClickSubscribe.bind(this, id)}
               type="button"
               disabled={isLoading}
             >
