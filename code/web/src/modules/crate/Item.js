@@ -37,7 +37,6 @@ class Item extends PureComponent {
     this.props
       .create({ crateId })
       .then((response) => {
-        debugger;
         if (response.data.errors && response.data.errors.length > 0) {
           this.props.messageShow(response.data.errors[0].message);
         } else {

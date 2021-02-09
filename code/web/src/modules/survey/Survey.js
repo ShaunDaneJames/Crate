@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import { APP_URL } from '../../setup/config/env';
 
 // UI Imports
-// import sporty from './assets/running.jpg';
 
 // App Imports
 import { surveyQuestions } from './surveyQuestions';
+import userRoutes from '../../setup/routes/user';
 
 // State will store current question
 // as well as obj with response tallies
 
-const Survey = () => {
+const Survey = (props) => {
   const [question, setQuestion] = useState(surveyQuestions[0]);
   const [styleAnswers, setStyleAnswers] = useState({
     Grunge: [],
@@ -66,6 +66,11 @@ const Survey = () => {
     } else if (style1.length > style2.length) {
       setUserStyle(`${sortedStyles[0][0]}`)
     }
+
+    debugger;
+    window.setTimeout(() => {
+      props.history.push(userRoutes.subscriptions.path);
+    }, 3000);
   }
 
   return (
