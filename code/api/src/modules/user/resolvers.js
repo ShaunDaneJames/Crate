@@ -78,3 +78,13 @@ export async function remove(parentValue, { id }) {
 export async function getGenders() {
   return Object.values(params.user.gender)
 }
+
+// User Style Update
+export async function styleUpdate(parentValue, { email, style }) {
+  const user = await models.User.findOne({ where: { email } })
+
+  user.style = '${style}'
+  await user.save();
+
+  return await user.style
+}
