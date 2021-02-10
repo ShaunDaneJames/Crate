@@ -25,6 +25,16 @@ describe('user queries', () => {
   done();
   })
 
+  it('Can successfully retrieve a user style if it is null', async (done) => {
+    const response = await request(server)
+    .post('/')
+    .send( {query: '{user(id: 1) {style}}'} )
+    .expect(200)
+
+    expect(response.body.data.user.style).toBe(null)
+    done();
+  })
+
   it('Returns user role with login', async (done) => {
     const response = await request(server)
     .post('/')
