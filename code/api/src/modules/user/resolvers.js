@@ -79,8 +79,8 @@ export async function getGenders() {
 }
 
 // User Style Update
-export async function styleUpdate(parentValue, { id, style }) {
-  const user = await models.User.findOne({ where: { id } })
+export async function styleUpdate(parentValue, { email, style }) {
+  const user = await models.User.findOne({ where: { email } })
 
   user.style = style
   await user.save();
