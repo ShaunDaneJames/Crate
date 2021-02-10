@@ -86,5 +86,5 @@ export async function styleUpdate(parentValue, { id, style }) {
   user.style = style
   await user.save();
 
-  return await user
+  return user
 }
