@@ -82,8 +82,8 @@ export async function getGenders() {
 export async function styleUpdate(parentValue, { email, style }) {
   const user = await models.User.findOne({ where: { email } })
 
-  user.style = '${style}'
+  user.style = style
   await user.save();
 
-  return await user.style
+  return await user
 }
