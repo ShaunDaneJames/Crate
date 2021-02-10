@@ -35,7 +35,17 @@ describe('user queries', () => {
     done();
   })
 
-  it('Returns user role with login', async (done) => {
+  it('Can successfully retrieve a user style if it exists', async (done) => {
+    const response = await request(server)
+    .post('/')
+    .send( {query: '{user(id: 3) {style}}'} )
+    .expect(200)
+    console.log(response.body.data)
+    expect(response.body.data.user.style).toBe('classic')
+    done();
+  })
+
+  it('Returns user role', async (done) => {
     const response = await request(server)
     .post('/')
     .send( {query: '{users {role}}'} )
@@ -44,15 +54,4 @@ describe('user queries', () => {
   expect(response.body.data.users[0].role).toBe('ADMIN')
   done();
   })
-
-
-    it('Returns user style with login', async (done) => {
-      const response = await request(server)
-      .post('/')
-      .send( {query: '{userLogin({email password role}})'} )
-      .expect(200)
-
-    expect(response.body.data.users[0].role).toBe('ADMIN')
-    done();
-    })
 })
