@@ -29,7 +29,7 @@ class Item extends PureComponent {
 
   onClickSubscribe = (crateId) => {
     this.setState({
-      // isLoading: true,
+      isLoading: true,
     });
 
     this.props.messageShow('Subscribing, please wait...');
@@ -56,7 +56,7 @@ class Item extends PureComponent {
       })
       .then(() => {
         this.setState({
-          // isLoading: false,
+          isLoading: false,
         });
 
         window.setTimeout(() => {
