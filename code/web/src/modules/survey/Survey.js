@@ -1,6 +1,10 @@
 // Imports
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { APP_URL } from '../../setup/config/env';
+
+import axios from 'axios';
+import { mutation } from 'gql-query-builder';
+import { routeApi } from '../../setup/routes';
 
 // UI Imports
 
@@ -23,7 +27,7 @@ const Survey = (props) => {
     setStyleAnswers(styleAnswers, styleAnswers[cat].push(question.id));
     let i = surveyQuestions.indexOf(question);
     if (i === surveyQuestions.length - 1) {
-      calculateStyle()
+      calculateStyle();
       return;
     }
     setQuestion(surveyQuestions[i + 1]);
@@ -46,26 +50,50 @@ const Survey = (props) => {
   };
 
   const calculateStyle = () => {
-    let styleTally = Object.entries(styleAnswers)
-    let sortedStyles = styleTally.sort((a,b) => {
-      return b[1].length > a[1].length ? 1 : -1
-    })
+    let styleTally = Object.entries(styleAnswers);
+    let sortedStyles = styleTally.sort((a, b) => {
+      return b[1].length > a[1].length ? 1 : -1;
+    });
 
-    let style1 = sortedStyles[0][1]
-    let style2 = sortedStyles[1][1]
+    let style1 = sortedStyles[0][1];
+    let style2 = sortedStyles[1][1];
     if (style1.length === 1) {
-      setUserStyle('Ecletic')
+      setUserStyle('Ecletic');
     } else if (style1.length === style2.length) {
-      setUserStyle(`${sortedStyles[0][0]} but ${sortedStyles[1][0]}`)
+      setUserStyle(`${sortedStyles[0][0]} but ${sortedStyles[1][0]}`);
     } else if (style1.length > style2.length) {
-      setUserStyle(`${sortedStyles[0][0]}`)
+      setUserStyle(`${sortedStyles[0][0]}`);
     }
+    console.log('After Result Calc:' + userStyle);
 
-    debugger;
     window.setTimeout(() => {
       props.history.push(userRoutes.subscriptions.path);
     }, 3000);
-  }
+  };
+
+  const APIcall = () => {
+    let userCredentials = {
+      // Email placeholder for Store email string access
+      email: 'shawn@shawn.shawn',
+      style: userStyle,
+    };
+    console.log('After Variable API:' + userStyle);
+
+    return axios.post(
+      routeApi,
+      mutation({
+        operation: 'userStyleUpdate',
+        variables: userCredentials,
+        fields: ['style'],
+      })
+    );
+  };
+
+  useEffect(() => {
+    if (userStyle) {
+      APIcall();
+    }
+  }, [userStyle]);
 
   return (
     <section
@@ -76,17 +104,19 @@ const Survey = (props) => {
         justifyContent: 'center',
       }}
     >
-      {!userStyle &&
+      {!userStyle && (
         <section>
           <h1 style={{ padding: '4em' }}>{question.question}</h1>
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          {question.answers.map((answer) => createAnswer(answer))}
+            {question.answers.map((answer) => createAnswer(answer))}
           </div>
-        </section>}
-      {userStyle && 
+        </section>
+      )}
+      {userStyle && (
         <section>
           <h1>Congrats! Your style is {userStyle}!</h1>
-        </section>}
+        </section>
+      )}
     </section>
   );
 };
