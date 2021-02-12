@@ -68,12 +68,12 @@ const Survey = (props) => {
   useEffect(() => {
     if (userStyle) {
       postUserStyle(props.user.details.email, userStyle)
+        // .then((response) => console.log(response))
         .then(
           window.setTimeout(() => {
             props.history.push(userRoutes.subscriptions.path);
           }, 3000)
         )
-        .then((response) => console.log(response))
         .catch((error) => {
           console.log(error);
         });
@@ -106,7 +106,7 @@ const Survey = (props) => {
   );
 };
 
-const mapStateToProps = function (state) {
+const mapStateToProps = (state) => {
   return {
     user: state.user,
   };
