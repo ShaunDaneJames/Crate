@@ -3,18 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { APP_URL } from '../../setup/config/env';
 import { connect } from 'react-redux';
 
-import axios from 'axios';
-import { mutation } from 'gql-query-builder';
-import { routeApi } from '../../setup/routes';
-
-// UI Imports
-
 // App Imports
 import { surveyQuestions } from './surveyQuestions';
 import userRoutes from '../../setup/routes/user';
+import { postUserStyle } from './api/actions';
 
 const Survey = (props) => {
   const [question, setQuestion] = useState(surveyQuestions[0]);
+  const [userStyle, setUserStyle] = useState(null);
   const [styleAnswers, setStyleAnswers] = useState({
     Grunge: [],
     Sporty: [],
@@ -22,16 +18,35 @@ const Survey = (props) => {
     Casual: [],
     Bohemian: [],
   });
-  const [userStyle, setUserStyle] = useState(null);
 
   const recordAnswer = (cat) => {
     setStyleAnswers(styleAnswers, styleAnswers[cat].push(question.id));
     let i = surveyQuestions.indexOf(question);
+
     if (i === surveyQuestions.length - 1) {
       calculateStyle();
       return;
     }
+
     setQuestion(surveyQuestions[i + 1]);
+  };
+
+  const calculateStyle = () => {
+    let tally = Object.entries(styleAnswers);
+    let sortedStyles = tally.sort((a, b) => {
+      return b[1].length > a[1].length ? 1 : -1;
+    });
+
+    let style1 = sortedStyles[0][1].length;
+    let style2 = sortedStyles[1][1].length;
+
+    if (style1 === 1) {
+      setUserStyle('Ecletic');
+    } else if (style1 === style2) {
+      setUserStyle(`${sortedStyles[0][0]} but ${sortedStyles[1][0]}`);
+    } else if (style1 > style2) {
+      setUserStyle(`${sortedStyles[0][0]}`);
+    }
   };
 
   const createAnswer = (answer) => {
@@ -50,49 +65,18 @@ const Survey = (props) => {
     );
   };
 
-  const calculateStyle = () => {
-    let styleTally = Object.entries(styleAnswers);
-    let sortedStyles = styleTally.sort((a, b) => {
-      return b[1].length > a[1].length ? 1 : -1;
-    });
-
-    let style1 = sortedStyles[0][1];
-    let style2 = sortedStyles[1][1];
-    if (style1.length === 1) {
-      setUserStyle('Ecletic');
-    } else if (style1.length === style2.length) {
-      setUserStyle(`${sortedStyles[0][0]} but ${sortedStyles[1][0]}`);
-    } else if (style1.length > style2.length) {
-      setUserStyle(`${sortedStyles[0][0]}`);
-    }
-    console.log('After Result Calc:' + userStyle);
-
-    window.setTimeout(() => {
-      props.history.push(userRoutes.subscriptions.path);
-    }, 3000);
-  };
-
-  const APIcall = () => {
-    let userCredentials = {
-      // Email placeholder for Store email string access
-      email: 'shawn@shawn.shawn',
-      style: userStyle,
-    };
-    console.log('After Variable API:' + userStyle);
-
-    return axios.post(
-      routeApi,
-      mutation({
-        operation: 'userStyleUpdate',
-        variables: userCredentials,
-        fields: ['style'],
-      })
-    );
-  };
-
   useEffect(() => {
     if (userStyle) {
-      APIcall();
+      postUserStyle(props.user.details.email, userStyle)
+        .then(
+          window.setTimeout(() => {
+            props.history.push(userRoutes.subscriptions.path);
+          }, 3000)
+        )
+        .then((response) => console.log(response))
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, [userStyle]);
 
@@ -129,4 +113,3 @@ const mapStateToProps = function (state) {
 };
 
 export default connect(mapStateToProps)(Survey);
-// export default Survey;
