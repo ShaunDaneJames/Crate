@@ -21,7 +21,7 @@ describe('user queries', () => {
     .send( {query: '{users {name}}'} )
     .expect(200)
 
-  expect(response.body.data.users.length).toBe(2)
+  expect(response.body.data.users.length).toBe(5)
   done();
   })
 
