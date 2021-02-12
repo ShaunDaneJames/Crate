@@ -1,6 +1,7 @@
 // Imports
 import React, { useEffect, useState } from 'react';
 import { APP_URL } from '../../setup/config/env';
+import { connect } from 'react-redux';
 
 import axios from 'axios';
 import { mutation } from 'gql-query-builder';
@@ -121,4 +122,11 @@ const Survey = (props) => {
   );
 };
 
-export default Survey;
+const mapStateToProps = function (state) {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(Survey);
+// export default Survey;
