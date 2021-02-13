@@ -35,7 +35,7 @@ The front end is built with React and Redux while the back end utilizes a Postgr
 - Alyssa Bull -
 - Shawn T -
 - Zach Stearns - [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/zach-stearns/) - [![GitHub][github-shield]](https://github.com/Stearnzy)
-- Shaun James - [![LinkedIn][linkedin-shield]](https://github.com/ShaunDaneJames) - [![GitHub][github-shield]](https://www.linkedin.com/in/shaun-james-2707a61bb/)
+- Shaun James - [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/shaun-james-2707a61bb/) - [![GitHub][github-shield]](https://github.com/ShaunDaneJames)
 - Shaunda Cunningham - [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/shaunda-cunningham/) - [![GitHub][github-shield]](https://github.com/smcunning)
 
 
