@@ -62,6 +62,7 @@ const Survey = (props) => {
         <img
           src={APP_URL + answer.image}
           style={{ width: width, height: height }}
+          alt='survey-image'
         />
       </div>
     );
