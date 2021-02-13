@@ -35,6 +35,7 @@ export async function login(parentValue, { email, password }) {
     throw new Error(`We do not have any user registered with ${ email } email address. Please signup.`)
   } else {
     const userDetails = user.get()
+    console.log(userDetails)
 
     // User exists
     const passwordMatch = await bcrypt.compare(password, userDetails.password)
