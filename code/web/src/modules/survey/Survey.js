@@ -43,7 +43,7 @@ const Survey = (props) => {
     let style2 = sortedStyles[1][1].length;
 
     if (style1 === 1) {
-      setUserStyle('Ecletic');
+      setUserStyle('Eclectic');
     } else if (style1 === style2) {
       setUserStyle(`${sortedStyles[0][0]} but ${sortedStyles[1][0]}`);
     } else if (style1 > style2) {
