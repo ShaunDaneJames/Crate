@@ -104,7 +104,7 @@ const Survey = (props) => {
       )}
       {userStyle && (
         <section>
-          <h1 style={{ display: 'flex', justifyContent: 'center', padding: '1em', fontSize: '3em' }}>Congrats! Your style is {userStyle}!</h1>
+          <h1 style={{ display: 'flex', justifyContent: 'center', padding: '1em', fontSize: '2em' }}>Congrats! Your style is {userStyle}!</h1>
         </section>
       )}
     </section>
