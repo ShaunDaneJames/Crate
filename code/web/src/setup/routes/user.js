@@ -6,11 +6,6 @@ import Profile from '../../modules/user/Profile';
 import Subscriptions from '../../modules/user/Subscriptions';
 import Survey from '../../modules/survey/Survey';
 
-// User routes
-// The routes below refer to all the possible routes related to user
-// When the page has a route match with one of the following paths it renders the corresponding component
-// This file's purpose is to separate out all the possible user routes
-// The App component (when built) will map over all possible routes (in all the files) and put them in a switch
 export default {
   login: {
     path: '/user/login',
