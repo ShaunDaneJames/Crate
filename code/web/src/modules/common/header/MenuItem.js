@@ -23,6 +23,7 @@ const MenuItem = (props) => {
   return (
     <Link
       to={to}
+      data-testId='MenuItemButton'
       style={
         Object.assign({
           padding: '0.6em 1em',

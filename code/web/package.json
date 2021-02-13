@@ -12,7 +12,8 @@
     "build:client:prod": "webpack -p",
     "build:server:prod": "babel src -s -D -d build",
     "start:server:prod": " node build/index.js",
-    "storybook": "start-storybook -p 9000 -c storybook"
+    "storybook": "start-storybook -p 9000 -c storybook",
+    "cypress:open": "cypress open"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +28,7 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "babel-loader": "8.1.0",
+    "cypress": "^6.4.0",
     "dotenv-webpack": "^1.7.0",
     "nodemon": "2.0.3",
     "webpack": "4.42.1",
