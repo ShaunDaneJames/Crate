@@ -4,7 +4,6 @@ import { APP_URL } from '../../setup/config/env';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
-
 // App Imports
 import { surveyQuestions } from './surveyQuestions';
 import userRoutes from '../../setup/routes/user';
@@ -52,17 +51,17 @@ const Survey = (props) => {
     }
   };
 
-  const createAnswer = (answer) => {
+  const createAnswer = (answer, height, width) => {
     return (
       <div
         onClick={() => recordAnswer(answer.category)}
         key={answer.text}
         style={{ padding: '1em' }}
       >
-        <h3>{answer.text}</h3>
+        <h3 style={{ display: 'flex', justifyContent: 'center', padding: '1em' }}>{answer.text}</h3>
         <img
           src={APP_URL + answer.image}
-          style={{ width: '10em', height: '7em' }}
+          style={{ width: width, height: height }}
         />
       </div>
     );
@@ -97,15 +96,15 @@ const Survey = (props) => {
     >
       {!userStyle && (
         <section>
-          <h1 style={{ padding: '4em' }}>{question.question}</h1>
-          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-            {question.answers.map((answer) => createAnswer(answer))}
+          <h1 style={{ display: 'flex', justifyContent: 'center', padding: '1em', fontSize: '3em' }}>{question.question}</h1>
+          <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
+            {question.answers.map((answer) => createAnswer(answer, question.height, question.width))}
           </div>
         </section>
       )}
       {userStyle && (
         <section>
-          <h1>Congrats! Your style is {userStyle}!</h1>
+          <h1 style={{ display: 'flex', justifyContent: 'center', padding: '1em', fontSize: '3em' }}>Congrats! Your style is {userStyle}!</h1>
         </section>
       )}
     </section>

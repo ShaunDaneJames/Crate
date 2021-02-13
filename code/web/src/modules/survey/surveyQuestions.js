@@ -2,6 +2,8 @@ export const surveyQuestions = [
   {
     id: 1,
     question: 'Which Spice Girl matches your style?',
+    height: '15em',
+    width: '12em',
     answers: [
       {
         text: 'Scary Spice',
@@ -33,6 +35,8 @@ export const surveyQuestions = [
   {
     id: 2,
     question: 'What activity do you do most?',
+    height: '10em',
+    width: '18em',
     answers: [
       {
         text: 'Jamming out at a rock concert',
@@ -64,6 +68,8 @@ export const surveyQuestions = [
   {
     id: 3,
     question: 'What does your ideal home look like?',
+    height: '10em',
+    width: '18em',
     answers: [
       {
         text: 'Dumpster Chic',
@@ -95,6 +101,8 @@ export const surveyQuestions = [
   {
     id: 4,
     question: 'What city best suites you?',
+    height: '10em',
+    width: '18em',
     answers: [
       {
         text: 'Berlin, Germany',
@@ -126,6 +134,8 @@ export const surveyQuestions = [
   {
     id: 5,
     question: 'What movie do you like?',
+    height: '15em',
+    width: '12em',
     answers: [
       {
         text: 'Lords of Dogtown',
