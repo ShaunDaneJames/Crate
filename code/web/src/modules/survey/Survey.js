@@ -2,11 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { APP_URL } from '../../setup/config/env';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
+
 
 // App Imports
 import { surveyQuestions } from './surveyQuestions';
 import userRoutes from '../../setup/routes/user';
 import { postUserStyle } from './api/actions';
+import { login } from '../user/api/actions';
 
 const Survey = (props) => {
   const [question, setQuestion] = useState(surveyQuestions[0]);
@@ -68,7 +71,10 @@ const Survey = (props) => {
   useEffect(() => {
     if (userStyle) {
       postUserStyle(props.user.details.email, userStyle)
-        // .then((response) => console.log(response))
+        .then(() => {
+          props.user.details.style = userStyle
+          login(props.user.details)
+        })
         .then(
           window.setTimeout(() => {
             props.history.push(userRoutes.subscriptions.path);
@@ -112,4 +118,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Survey);
+export default connect(mapStateToProps)(withRouter(Survey));

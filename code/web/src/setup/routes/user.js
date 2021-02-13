@@ -41,5 +41,3 @@ export default {
   },
 };
 
-// TODO:
-// Create property type for survey obj
