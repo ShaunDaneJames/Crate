@@ -6,7 +6,7 @@
   - [TechStack](#TechStack)
   - [Setup](#Setup)
   - [Who We Are](#Who-We-Are)
-  - [Original Repo](#crate-👕👖📦)
+  - [Original Repo](#crate)
 
 
 ## Overview
