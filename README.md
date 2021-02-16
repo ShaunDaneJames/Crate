@@ -1,3 +1,49 @@
+# Crate
+
+## Directory
+
+  - [Overview](#Overview)
+  - [TechStack](#TechStack)
+  - [Setup](#Setup)
+  - [Who We Are](#Who-We-Are)
+  - [Original Repo](#See-Original-README-below)
+
+
+## Overview
+
+We have expanded upon the [original crate project](https://github.com/atulmy/crate) to include a style preference for users. They take a quick survey to assess their style. Once determined, this user's style is updated in the database as well as the Redux store.
+
+## TechStack
+
+The front end is built with React and Redux while the back end utilizes a Postgres database, Sequelize as the ORM, and GraphQL for convenient calls the front end can use. All of this is served up via an Express framework and tested with Jest and Supertest.
+
+## Setup
+
+- Node
+- Express
+- Postgres
+- [Clone Repo](#https://github.com/ShaunDaneJames/Crate)
+- cd into the api folder then 'npm run setup'
+- cd back up then into the web folder to run 'npm install'
+- delete subscriptions?
+- 'npx sequelize db:seed:undo:all'
+- 'npx sequelize db:seed:all --seeders-path src/seeders'
+- 'run 'npm start' within BOTH api and web.
+  - You can play with GraphiQL at localhost:8000 and browse the site at localhost:3000
+
+## Who We Are
+- Alyssa Bull -[![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/alyssa-bull) - [![GitHub][github-shield]](https://github.com/alyssabull)
+- Shawn T -[![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/shawntruesdale) - [![GitHub][github-shield]](https://GitHub.com/Shawntru)
+- Zach Stearns - [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/zach-stearns/) - [![GitHub][github-shield]](https://github.com/Stearnzy)
+- Shaun James - [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/shaun-james-2707a61bb/) - [![GitHub][github-shield]](https://github.com/ShaunDaneJames)
+- Shaunda Cunningham - [![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/shaunda-cunningham/) - [![GitHub][github-shield]](https://github.com/smcunning)
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[github-shield]: https://img.shields.io/badge/-GitHub-black.svg?style=flat-square&logo=github&colorB=555
+
+# See Original README below:
 [Turing Project Specs](https://mod4.turing.io/projects/crate/crate.html)
 
 ![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
@@ -110,7 +156,7 @@ Click on image to view fullscreen and zoom
 - Setup
   - API: Install packages and database setup (migrations and seed) `cd api` and `npm run setup`
   - Webapp: Install packages `cd web` and `npm install`
-  - Mobile: 
+  - Mobile:
     1. Install packages `cd mobile` and `npm install`
     2. Install iOS dependencies `cd mobile/ios` `pod install`
 - Development
